@@ -1,61 +1,290 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Gym Management System API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A comprehensive Laravel-based REST API for managing gym operations including member registration, class scheduling, trainer allocation, and attendance tracking.
 
-## About Laravel
+![Laravel](https://img.shields.io/badge/Laravel-v10.x-FF2D20?style=for-the-badge&logo=shields.io/badge/PHP-v8.2+-777BB4?style=for-the-badge&logo=php&logoio/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor= [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Database Setup](#database-setup)
+- [API Documentation](#api-documentation)
+- [Testing](#testing)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [License](#license)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## ✨ Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 🔐 Authentication & Member Management
+- **Member Registration**: Complete sign-up system with validation
+- **JWT Authentication**: Secure token-based authentication using Laravel Sanctum
+- **Profile Management**: Update member information, membership types, and status
+- **Membership Types**: Basic, Premium, and VIP membership tiers
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 📅 Class Scheduling System
+- **Class Management**: Create and manage different types of gym classes
+- **Schedule Creation**: Flexible scheduling with date/time management
+- **Capacity Control**: Set maximum participants per class
+- **Room Assignment**: Assign classes to specific rooms
+- **Booking System**: Members can book and cancel class reservations
 
-## Learning Laravel
+### 👨‍🏋️ Trainer Management
+- **Trainer Profiles**: Complete trainer information with specializations
+- **Availability Tracking**: Prevent double-booking conflicts
+- **Specialization Tags**: Track trainer expertise areas
+- **Rate Management**: Hourly rate tracking for trainers
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 📊 Attendance Tracking
+- **Check-in/Check-out System**: Real-time attendance logging
+- **Attendance History**: Comprehensive attendance reports
+- **Duration Tracking**: Calculate workout session lengths
+- **Status Updates**: Automatic status updates for class participation
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 🛠 Tech Stack
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Framework**: Laravel 10.x
+- **Language**: PHP 8.2+
+- **Database**: PostgreSQL 13+
+- **Authentication**: Laravel Sanctum
+- **API**: RESTful API design
+- **Validation**: Laravel Form Requests
+- **ORM**: Eloquent ORM
 
-## Laravel Sponsors
+## 📋 Prerequisites
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Before you begin, ensure you have the following installed:
 
-### Premium Partners
+- **PHP** >= 8.2
+- **Composer** >= 2.0
+- **PostgreSQL** >= 13.0
+- **Git**
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## 🚀 Installation
 
-## Contributing
+### 1. Clone the Repository
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+git clone https://github.com/yourusername/gym-management-system.git
+cd gym-management-system
+```
 
-## Code of Conduct
+### 2. Install Dependencies
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+composer install
+```
 
-## Security Vulnerabilities
+### 3. Environment Configuration
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+cp .env.example .env
+```
 
-## License
+Edit the `.env` file with your database credentials:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```env
+DB_CONNECTION=pgsql
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_DATABASE=gym_management
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
+
+### 4. Generate Application Key
+
+```bash
+php artisan key:generate
+```
+
+### 5. Install Laravel Sanctum
+
+```bash
+composer require laravel/sanctum
+php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+```
+
+## 🗄️ Database Setup
+
+### 1. Create Database
+
+```sql
+CREATE DATABASE gym_management;
+```
+
+### 2. Run Migrations
+
+```bash
+php artisan migrate
+```
+
+### 3. Seed Sample Data
+
+```bash
+php artisan db:seed --class=TrainerSeeder
+php artisan db:seed --class=GymClassSeeder
+```
+
+### 4. Start Development Server
+
+```bash
+php artisan serve
+```
+
+The API will be available at `http://localhost:8000/api`
+
+## 📚 API Documentation
+
+### Authentication Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/register` | Register new member |
+| POST | `/api/login` | Member login |
+| POST | `/api/logout` | Member logout |
+
+### Member Management
+
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| GET | `/api/members` | Get all members | ✅ |
+| POST | `/api/members` | Create new member | ✅ |
+| GET | `/api/members/{id}` | Get specific member | ✅ |
+| PUT | `/api/members/{id}` | Update member | ✅ |
+| DELETE | `/api/members/{id}` | Delete member | ✅ |
+
+### Class Scheduling
+
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| GET | `/api/class-schedules` | Get class schedules | ✅ |
+| POST | `/api/class-schedules` | Create new schedule | ✅ |
+| GET | `/api/class-schedules/{id}` | Get specific schedule | ✅ |
+| POST | `/api/class-schedules/{id}/book` | Book a class | ✅ |
+| DELETE | `/api/class-schedules/{id}/cancel` | Cancel booking | ✅ |
+
+### Attendance Management
+
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| POST | `/api/attendance/check-in` | Check-in to class | ✅ |
+| POST | `/api/attendance/check-out` | Check-out from class | ✅ |
+| GET | `/api/attendance/history` | Get attendance history | ✅ |
+
+### Example API Requests
+
+#### Register a New Member
+
+```bash
+curl -X POST http://localhost:8000/api/register \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "john.doe@example.com",
+    "password": "password123",
+    "password_confirmation": "password123",
+    "membership_type": "premium"
+  }'
+```
+
+#### Book a Class
+
+```bash
+curl -X POST http://localhost:8000/api/class-schedules/1/book \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -H "Content-Type: application/json"
+```
+
+## 🧪 Testing
+
+### Using Postman
+
+1. Import the provided Postman collection
+2. Set up environment variables:
+   - `base_url`: `http://localhost:8000/api`
+   - `token`: (will be set automatically after login)
+
+### Manual Testing
+
+1. **Register a new member**
+2. **Login and obtain token**
+3. **Create trainers and gym classes**
+4. **Schedule classes**
+5. **Book classes as member**
+6. **Test check-in/check-out system**
+
+### Test Data
+
+Use the included seeders to populate test data:
+
+```bash
+php artisan db:seed
+```
+
+## 📁 Project Structure
+
+```
+gym-management-system/
+├── app/
+│   ├── Http/Controllers/API/
+│   │   ├── AuthController.php
+│   │   ├── MemberController.php
+│   │   ├── TrainerController.php
+│   │   ├── GymClassController.php
+│   │   ├── ClassScheduleController.php
+│   │   └── AttendanceController.php
+│   └── Models/
+│       ├── Member.php
+│       ├── Trainer.php
+│       ├── GymClass.php
+│       ├── ClassSchedule.php
+│       ├── MemberClass.php
+│       └── AttendanceLog.php
+├── database/
+│   ├── migrations/
+│   └── seeders/
+├── routes/
+│   └── api.php
+└── README.md
+```
+
+## 🚀 Deployment
+
+### Production Setup
+
+1. **Install dependencies**:
+```bash
+composer install --prefer-dist --no-dev -o
+```
+
+2. **Set environment**:
+```bash
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+```
+
+3. **Set proper permissions**:
+```bash
+chmod -R 755 storage bootstrap/cache
+```
+
+## 📄 License
+
+This project is open-sourced software licensed under the [MIT license](LICENSE).
+
+## 👥 Authors
+
+- **Rizko Rachmayadi** - *Initial work* - [YourGitHub](https://github.com/rizko-d)
+
+## 🙏 Acknowledgments
+
+- Laravel Framework for the robust foundation
+- Laravel Sanctum for authentication
+- PostgreSQL for reliable data storage
+- The open-source community for inspiration
+
+
+**Built with ❤️ using Laravel and PostgreSQL**
