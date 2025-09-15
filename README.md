@@ -266,7 +266,7 @@ This project is open-sourced software licensed under the [MIT license](LICENSE).
 
 ## 👥 Authors
 
-- **Rizko Rachmayadi** - *Initial work* - [YourGitHub](https://github.com/rizko-d)
+- **Rizko Rachmayadi** - *Initial work* - (https://github.com/rizko-d)
 
 ## 🙏 Acknowledgments
 
