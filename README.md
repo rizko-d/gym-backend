@@ -2,17 +2,6 @@
 
 A comprehensive Laravel-based REST API for managing gym operations including member registration, class scheduling, trainer allocation, and attendance tracking.
 
-![Laravel](https://img.shields.io/badge/Laravel-v10.x-FF2D20?style=for-the-badge&logo=shields.io/badge/PHP-v8.2+-777BB4?style=for-the-badge&logo=php&logoio/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor= [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Database Setup](#database-setup)
-- [API Documentation](#api-documentation)
-- [Testing](#testing)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [License](#license)
-
 ## ✨ Features
 
 ### 🔐 Authentication & Member Management
